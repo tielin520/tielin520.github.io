@@ -1,0 +1,64 @@
+/* styles.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: pink;
+}
+
+#hearts-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: var(--heart-size);
+    height: var(--heart-size);
+    background-color: var(--heart-color);
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: calc(var(--heart-size) / -2);
+    left: 0;
+}
+
+.heart::after {
+    left: calc(var(--heart-size) / 2);
+    top: 0;
+}
+
+.heart {
+    position: absolute;
+    background-color: var(--heart-color);
+    width: var(--heart-size);
+    height: var(--heart-size);
+    transform: rotate(-45deg);
+    animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) rotate(-45deg);
+    }
+    50% {
+        transform: translate(0, var(--float-offset)) rotate(-45deg);
+    }
+}
+
+@keyframes growAndFade {
+    0% {
+        transform: translate(0, var(--current-offset)) scale(1) rotate(-45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, var(--current-offset)) scale(2) rotate(-45deg);
+        opacity: 0;
+    }
+}
